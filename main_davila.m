@@ -5,16 +5,16 @@ clear,clc,close all
 disp('Two-period model based on Davila et al.')
 
 % Set parameters
-beta = 0.95^20;
+beta  = 0.95^20;
 sigma = 2;
 alpha = 0.36;
-y = 1;
-prob = 0.5;
-delta = 0.1;
-e_l = 1-delta/prob;
-e_h = 1+delta/(1-prob); 
+y     = 1;
+prob  = 0.5;
+risk  = 0.1;
+e_l   = 1-risk/prob;
+e_h   = 1+risk/(1-prob); 
 % Average labor efficiency is always 1:
-L = prob*e_l+(1-prob)*e_h;
+L     = prob*e_l+(1-prob)*e_h;
 weight_old = 0.9;
 
 % Solve for competitive equilibrium
@@ -33,7 +33,7 @@ while err>1e-10
 
     % Step 4: Update capital guess based on savings
     K_new = weight_old*K_guess + (1-weight_old)*savings; 
-    err = abs(K_new - K_guess); 
+    err = abs(savings - K_guess); 
     K_guess = K_new;
     disp([K_guess,savings])
 end
@@ -41,6 +41,8 @@ end
 % Step 5: Store the final capital and savings values for analysis
 K_final = K_guess;
 savings_final = savings;
+r = f_mpk(K_final,L,alpha);
+w = f_mpl(K_final,L,alpha);
 
 % Display final results
 disp(['Final Capital: ', num2str(K_final), ', Final Savings: ', num2str(savings_final)]);
@@ -98,5 +100,5 @@ RHS  = beta*r*(prob*c2_l^(-sigma)+(1-prob)*c2_h^(-sigma));
 
 F    = LHS-RHS;
 
-end %end function "f_household"
+end %end function "f_euler"
 
