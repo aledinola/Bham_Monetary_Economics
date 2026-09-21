@@ -23,10 +23,6 @@ par.y1 = 1;
 par.y2 = [0.8; 1.2];
 par.prob = [0.5; 0.5];
 
-% Optional exogenous borrowing limit.
-% -Inf means that only positive consumption restricts borrowing.
-par.aMin = -Inf;
-
 %% Household saving at a given interest rate
 %[text] First take the interest rate as given. At $R=1$, solve the household problem.
 
