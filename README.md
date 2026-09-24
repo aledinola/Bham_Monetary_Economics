@@ -1,6 +1,11 @@
-# Bham_Monetary_Economics
-Public repository for the Master course "Monetary Economics and the Macroeconomy", taught in Msc MBF
+# Monetary Economics and the Macroeconomy
+
+MATLAB material for the MSc MBF course at the University of Birmingham, taught by Alessandro Di Nola.
 
 ## MATLAB material for 2026–2027
 
-See the [MATLAB inventory](2026_2027/MATLAB_INVENTORY.md) for descriptions of the scripts, live scripts and helper functions, their lecture or seminar associations, and instructions for running them. The files retain the folder structure used in the course's Dropbox teaching materials.
+All shared scripts, plain-text live scripts, helper functions and the saved workspace are in [matlab_codes](2026_2027/matlab_codes). This folder matches the corresponding Dropbox folder in paths and file contents.
+
+See the [MATLAB inventory](2026_2027/MATLAB_INVENTORY.md) for each file's purpose, lecture/seminar/assessment association, dependencies and usage. The inventory is identical in Dropbox and GitHub.
+
+The lecture figure generator `app1.m` remains only in Dropbox at `2026_2027/1_lectures/figures/app1.m`. It is not part of this repository.

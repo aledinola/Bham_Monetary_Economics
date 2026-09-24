@@ -1,26 +1,21 @@
-# Workspace Instructions
+# Repository maintenance instructions
 
-## Course MATLAB material
+## Layout and documentation
 
-- This project contains MATLAB code and live scripts that accompany lectures and seminar classes.
-- This MATLAB material is also available in the course's public GitHub repository: https://github.com/aledinola/Bham_Monetary_Economics/tree/main.
+- Keep all shared 2026–2027 MATLAB scripts, plain-text live scripts, helper functions and supporting workspace files in `2026_2027/matlab_codes/`. Keep dependencies together; do not create duplicate MATLAB files elsewhere in the repository.
+- `app1.m` is Dropbox-only at `2026_2027/1_lectures/figures/app1.m`. Never publish it or create a `2026_2027/1_lectures/` folder in this repository. Preserve the original Dropbox file and local lecture figures.
+- Maintain one `2026_2027/MATLAB_INVENTORY.md` in this repository and one at the same relative path in Dropbox, with identical contents. Include each file's purpose, teaching association, dependencies and usage; list ancillary workspace files separately. Describe `app1.m` separately using its plain-text local path.
+- Verify teaching associations from file contents and course materials; do not infer them from filenames alone. MATLAB live scripts may be `.m` files containing `%[text]` markup, not only `.mlx` files.
+- Keep `README.md` short, linking to the central code folder and inventory. Keep maintenance rules here rather than duplicating the inventory.
 
-## MATLAB inventory and GitHub publication
+## Synchronization and publication
 
-- Store all MATLAB scripts, live scripts and helper functions supporting lectures and seminar classes in `2026_2027/matlab_codes/`. Keep their dependencies together there; do not keep duplicate teaching-code copies in `1_lectures/` or `2_seminar_classes/`.
-- Exception: keep `2026_2027/1_lectures/figures/app1.m` in its existing location because it generates plots imported by the lecture TeX files.
-- The inventory for academic year 2026–2027 is `2026_2027/MATLAB_INVENTORY.md`. It describes each MATLAB source file, its lecture/seminar/assessment association, dependencies and usage, and separately lists ancillary MATLAB workspace files.
-- Use the inventory to explain each file's role and teaching association, including files with generic names; directory placement alone is not documentation.
-- When GitHub is identified as the updated source, copy from the current GitHub version and verify file contents before deleting superseded Dropbox copies. Do not overwrite newer GitHub code with older local versions.
-- MATLAB live scripts may be plain-text `.m` files containing `%[text]` markup; do not search only for `.mlx` files.
-- Keep this inventory current when adding, changing, moving or removing the MATLAB material it covers. Verify teaching associations from the file contents and course materials rather than guessing from filenames.
-- **Automatic GitHub publication rule:** whenever the user asks to create a new MATLAB file or modify an existing MATLAB file in this course workspace, treat publication to GitHub as part of the same task. Update `2026_2027/MATLAB_INVENTORY.md` when needed, then commit the affected MATLAB file(s) and any corresponding inventory change to `aledinola/Bham_Monetary_Economics` on `main` and push the commit. Do not wait for a separate request to publish. Only skip the GitHub commit/push if the user explicitly says not to publish that change.
-- Preserve paths under `2026_2027/` when publishing MATLAB material. After each publication, verify that the remote versions match the updated course files and report the commit SHA.
-- The Dropbox project root is not itself a Git checkout. Use a separate checkout for GitHub publication, preserve unrelated repository content, and verify the commit and push before reporting success.
-- Do not include other Dropbox teaching or assessment documents merely because they are next to the MATLAB files. Publish only the requested material and its necessary dependencies.
+- When adding, modifying, moving or removing shared MATLAB material, synchronize the shared collection and inventory with the corresponding Dropbox course workspace as part of the same task. Keep relative paths and file contents identical. If Dropbox is unavailable, report that synchronization remains outstanding rather than claiming completion.
+- Compare both copies and the current GitHub revision before synchronization. Never overwrite divergent or newer content blindly. For restructuring-only tasks, preserve all MATLAB file bytes, including line endings, and verify hashes before removing redundant copies.
+- Work in a separate Git checkout; the Dropbox course root is not a Git repository. Preserve unrelated content and publish only requested material and necessary dependencies, not adjacent teaching or assessment documents.
+- Commit affected shared files and inventory changes to `aledinola/Bham_Monetary_Economics` on `main` and push as part of the requested task, unless the user explicitly says not to publish. Never publish `app1.m`; synchronize inventory changes describing it without adding the file.
+- After publication, verify the remote paths and contents against Dropbox and report the commit SHA. Do not claim synchronization based only on a successful push.
 
-## Temporary-file cleanup
+## Temporary files
 
-- At the end of every task, remove all temporary files and directories created during that task.
-- Before deleting anything, validate the exact target paths and preserve pre-existing or user-created files.
-- If any task-created temporary artifact cannot be removed, report its exact path and the reason.
+- Remove task-created temporary files and directories at task completion. Validate exact resolved paths before deletion and preserve pre-existing or user-created files. Report the exact path and reason for any temporary artifact that cannot be removed.
