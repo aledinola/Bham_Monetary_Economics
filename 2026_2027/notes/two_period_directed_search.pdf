@@ -1,0 +1,232 @@
+%PDF-1.4
+%ASCII
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Count 5 /Kids [5 0 R 6 0 R 7 0 R 8 0 R 9 0 R] >>
+endobj
+3 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Courier >>
+endobj
+5 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 10 0 R >>
+endobj
+6 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 11 0 R >>
+endobj
+7 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 12 0 R >>
+endobj
+8 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 13 0 R >>
+endobj
+9 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 14 0 R >>
+endobj
+10 0 obj
+<< /Length 1638 >>
+stream
+BT /F1 16 Tf 54 748 Td (A Two-Period Directed-Search Model with Wealth Heterogeneity) Tj ET
+BT /F2 9 Tf 54 720 Td () Tj ET
+BT /F2 9 Tf 54 708 Td (Equilibrium Definition and Numerical Solution) Tj ET
+BT /F2 9 Tf 54 696 Td () Tj ET
+BT /F2 9 Tf 54 684 Td (Simplified version of Repele \(2026\): no heterogeneity in job type x.) Tj ET
+BT /F2 9 Tf 54 672 Td (All jobs have common productivity y_bar, separation probability delta,) Tj ET
+BT /F2 9 Tf 54 660 Td (retention Delta = 1-delta, and vacancy cost phi.) Tj ET
+BT /F2 9 Tf 54 648 Td () Tj ET
+BT /F2 9 Tf 54 636 Td (Workers differ in initial liquid wealth a1 ~ G\(a1\). Preferences:) Tj ET
+BT /F2 9 Tf 54 624 Td (    u\(c1\) + beta E[u\(c2\)],   u' > 0, u'' < 0.) Tj ET
+BT /F2 9 Tf 54 612 Td (Savings satisfy a2 >= a_bar and earn gross return R.) Tj ET
+BT /F2 9 Tf 54 600 Td (All workers start period 1 unemployed; unemployment income in period 2 is b.) Tj ET
+BT /F2 9 Tf 54 588 Td () Tj ET
+BT /F2 9 Tf 54 576 Td (A submarket is indexed by posted wage w. Let n\(w\) be applicants and v\(w\)) Tj ET
+BT /F2 9 Tf 54 564 Td (vacancies. In an active submarket:) Tj ET
+BT /F2 9 Tf 54 552 Td (    theta\(w\) = v\(w\) / n\(w\).) Tj ET
+BT /F2 9 Tf 54 540 Td (Worker job-finding probability: p\(theta\), increasing in theta.) Tj ET
+BT /F2 9 Tf 54 528 Td (Vacancy-filling probability: q\(theta\)=p\(theta\)/theta, decreasing in theta.) Tj ET
+BT /F2 9 Tf 54 516 Td () Tj ET
+BT /F2 9 Tf 54 504 Td (Period-2 values:) Tj ET
+BT /F2 9 Tf 54 492 Td (    E2\(a2,w\) = u\(R a2 + w\)) Tj ET
+BT /F2 9 Tf 54 480 Td (    U2\(a2\)   = u\(R a2 + b\)) Tj ET
+BT /F2 9 Tf 54 468 Td (    J\(w\)     = y_bar - w.) Tj ET
+endstream
+endobj
+11 0 obj
+<< /Length 2431 >>
+stream
+BT /F1 16 Tf 54 748 Td (Definition of equilibrium) Tj ET
+BT /F2 9 Tf 54 720 Td () Tj ET
+BT /F2 9 Tf 54 708 Td (A directed-search equilibrium is) Tj ET
+BT /F2 9 Tf 54 696 Td (    E = { a2*\(a1\), w*\(a1\), theta\(w\), n\(w\), v\(w\) }) Tj ET
+BT /F2 9 Tf 54 684 Td (such that:) Tj ET
+BT /F2 9 Tf 54 672 Td () Tj ET
+BT /F1 10 Tf 54 660 Td (1. WORKER OPTIMIZATION.) Tj ET
+BT /F2 9 Tf 54 648 Td (Taking the entire tightness schedule theta\(w\) as given, each worker solves) Tj ET
+BT /F2 9 Tf 54 636 Td () Tj ET
+BT /F2 9 Tf 54 624 Td ( \(a2*\(a1\),w*\(a1\)\) in arg max_{a2>=a_bar,w} {) Tj ET
+BT /F2 9 Tf 54 612 Td (     u\(R a1-a2\)) Tj ET
+BT /F2 9 Tf 54 600 Td (   + beta p\(theta\(w\)\) Delta u\(R a2+w\)) Tj ET
+BT /F2 9 Tf 54 588 Td (   + beta [1-p\(theta\(w\)\) Delta] u\(R a2+b\) }.) Tj ET
+BT /F2 9 Tf 54 576 Td () Tj ET
+BT /F2 9 Tf 54 564 Td (The probability of employment in period 2 is p\(theta\(w\)\)*Delta.) Tj ET
+BT /F2 9 Tf 54 552 Td () Tj ET
+BT /F1 10 Tf 54 540 Td (2. FIRM FREE ENTRY.) Tj ET
+BT /F2 9 Tf 54 528 Td (Vacancy value in wage submarket w:) Tj ET
+BT /F2 9 Tf 54 516 Td (    V\(w\) = -phi + beta Delta q\(theta\(w\)\) \(y_bar-w\).) Tj ET
+BT /F2 9 Tf 54 504 Td () Tj ET
+BT /F2 9 Tf 54 492 Td (Free entry / complementary slackness:) Tj ET
+BT /F2 9 Tf 54 480 Td (    phi >= beta Delta q\(theta\(w\)\) \(y_bar-w\),) Tj ET
+BT /F2 9 Tf 54 468 Td (    theta\(w\) >= 0,) Tj ET
+BT /F2 9 Tf 54 456 Td (    theta\(w\) [phi-beta Delta q\(theta\(w\)\)\(y_bar-w\)] = 0.) Tj ET
+BT /F2 9 Tf 54 444 Td () Tj ET
+BT /F2 9 Tf 54 432 Td (Hence every active submarket satisfies) Tj ET
+BT /F2 9 Tf 54 420 Td (    phi = beta Delta q\(theta\(w\)\) \(y_bar-w\).) Tj ET
+BT /F2 9 Tf 54 408 Td () Tj ET
+BT /F1 10 Tf 54 396 Td (3. WORKER-FLOW CONSISTENCY.) Tj ET
+BT /F2 9 Tf 54 384 Td (    n\(w\) = integral 1{w*\(a1\)=w} dG\(a1\).) Tj ET
+BT /F2 9 Tf 54 372 Td (On a discrete wealth grid: n_j = sum_i mu_i 1{w_i*=w_j}.) Tj ET
+BT /F2 9 Tf 54 360 Td () Tj ET
+BT /F1 10 Tf 54 348 Td (4. VACANCY / TIGHTNESS CONSISTENCY.) Tj ET
+BT /F2 9 Tf 54 336 Td (    v\(w\) = theta\(w\) n\(w\)     in every active submarket.) Tj ET
+BT /F2 9 Tf 54 324 Td () Tj ET
+BT /F1 10 Tf 54 312 Td (5. MATCHING CONSISTENCY.) Tj ET
+BT /F2 9 Tf 54 300 Td (    p_w = p\(theta\(w\)\),   q_w = q\(theta\(w\)\) = p\(theta\(w\)\)/theta\(w\).) Tj ET
+BT /F2 9 Tf 54 288 Td () Tj ET
+BT /F2 9 Tf 54 276 Td (There is no asset-market-clearing condition because R is exogenous.) Tj ET
+endstream
+endobj
+12 0 obj
+<< /Length 2152 >>
+stream
+BT /F1 16 Tf 54 748 Td (Why there is no fixed point over theta\(w\)) Tj ET
+BT /F2 9 Tf 54 720 Td () Tj ET
+BT /F2 9 Tf 54 708 Td (Conditional on w, free entry determines theta\(w\) point by point:) Tj ET
+BT /F2 9 Tf 54 696 Td (    q\(theta\(w\)\) = phi / [ beta Delta \(y_bar-w\) ].) Tj ET
+BT /F2 9 Tf 54 684 Td () Tj ET
+BT /F2 9 Tf 54 672 Td (Under CRS matching, firm profitability depends on n and v only through) Tj ET
+BT /F2 9 Tf 54 660 Td (theta=v/n. It does not depend on the absolute mass or composition of applicants.) Tj ET
+BT /F2 9 Tf 54 648 Td (Thus the solution sequence is) Tj ET
+BT /F2 9 Tf 54 636 Td () Tj ET
+BT /F2 9 Tf 54 624 Td (    w  ->  theta\(w\)  ->  worker choices  ->  n\(w\)  ->  v\(w\)=theta\(w\)n\(w\).) Tj ET
+BT /F2 9 Tf 54 612 Td () Tj ET
+BT /F2 9 Tf 54 600 Td (A genuine fixed point would arise if firm profitability depended on the) Tj ET
+BT /F2 9 Tf 54 588 Td (endogenous composition of applicants \(for example worker productivity types\).) Tj ET
+BT /F2 9 Tf 54 576 Td () Tj ET
+BT /F1 10 Tf 54 564 Td (MATCHING-FUNCTION PARAMETERIZATION \(Repele 2026, Appendix B1\).) Tj ET
+BT /F2 9 Tf 54 552 Td () Tj ET
+BT /F2 9 Tf 54 540 Td (    M\(n,v\) = n v \(n^gamma + v^gamma\)^\(-1/gamma\), gamma>0.) Tj ET
+BT /F2 9 Tf 54 528 Td () Tj ET
+BT /F2 9 Tf 54 516 Td (With theta=v/n:) Tj ET
+BT /F2 9 Tf 54 504 Td (    p\(theta\) = theta \(1+theta^gamma\)^\(-1/gamma\)) Tj ET
+BT /F2 9 Tf 54 492 Td (    q\(theta\) =       \(1+theta^gamma\)^\(-1/gamma\).) Tj ET
+BT /F2 9 Tf 54 480 Td () Tj ET
+BT /F2 9 Tf 54 468 Td (Define) Tj ET
+BT /F2 9 Tf 54 456 Td (    q_FE\(w\) = phi / [ beta Delta \(y_bar-w\) ].) Tj ET
+BT /F2 9 Tf 54 444 Td (For 0<q_FE\(w\)<1, free entry can be inverted analytically:) Tj ET
+BT /F2 9 Tf 54 432 Td (    theta\(w\) = \( q_FE\(w\)^\(-gamma\) - 1 \)^\(1/gamma\).) Tj ET
+BT /F2 9 Tf 54 420 Td (Then p\(w\)=p\(theta\(w\)\). If q_FE\(w\)>=1, the submarket is inactive.) Tj ET
+BT /F2 9 Tf 54 408 Td () Tj ET
+BT /F2 9 Tf 54 396 Td (Repele's quantitative model uses gamma=0.38. Her quantitative model also) Tj ET
+BT /F2 9 Tf 54 384 Td (uses CRRA sigma=2; both are natural benchmark values for a numerical example.) Tj ET
+endstream
+endobj
+13 0 obj
+<< /Length 2079 >>
+stream
+BT /F1 16 Tf 54 748 Td (Numerical parameterization and grids) Tj ET
+BT /F2 9 Tf 54 720 Td () Tj ET
+BT /F2 9 Tf 54 708 Td (Normalize y_bar=1. Choose beta and R consistently with the period length.) Tj ET
+BT /F2 9 Tf 54 696 Td (Choose common delta and set Delta=1-delta. A simple benefit rule is) Tj ET
+BT /F2 9 Tf 54 684 Td (    b = rho_b y_bar.) Tj ET
+BT /F2 9 Tf 54 672 Td () Tj ET
+BT /F1 10 Tf 54 660 Td (CALIBRATING VACANCY COST.) Tj ET
+BT /F2 9 Tf 54 648 Td (Pick reference wage w_ref and target job-finding probability p_ref.) Tj ET
+BT /F2 9 Tf 54 636 Td (For the matching function above:) Tj ET
+BT /F2 9 Tf 54 624 Td (    theta_ref = [p_ref^gamma/\(1-p_ref^gamma\)]^\(1/gamma\)) Tj ET
+BT /F2 9 Tf 54 612 Td (    q_ref     = \(1-p_ref^gamma\)^\(1/gamma\)) Tj ET
+BT /F2 9 Tf 54 600 Td (    phi       = beta Delta q_ref \(y_bar-w_ref\).) Tj ET
+BT /F2 9 Tf 54 588 Td () Tj ET
+BT /F1 10 Tf 54 576 Td (WAGE GRID.) Tj ET
+BT /F2 9 Tf 54 564 Td (Active submarkets require q_FE\(w\)<=1, hence) Tj ET
+BT /F2 9 Tf 54 552 Td (    w <= y_bar - phi/\(beta Delta\).) Tj ET
+BT /F2 9 Tf 54 540 Td (With no nonpecuniary value of employment, w<=b is dominated. Use) Tj ET
+BT /F2 9 Tf 54 528 Td (    w_min = b + eps_w) Tj ET
+BT /F2 9 Tf 54 516 Td (    w_max = y_bar - phi/\(beta Delta\) - eps_w.) Tj ET
+BT /F2 9 Tf 54 504 Td (A uniform grid with about 200-500 points is adequate.) Tj ET
+BT /F2 9 Tf 54 492 Td (Because theta\(w\) can vary rapidly near w_max, an alternative is a grid) Tj ET
+BT /F2 9 Tf 54 480 Td (uniform in theta or p, recovering wages from) Tj ET
+BT /F2 9 Tf 54 468 Td (    w\(theta\) = y_bar - phi/[beta Delta q\(theta\)].) Tj ET
+BT /F2 9 Tf 54 456 Td () Tj ET
+BT /F1 10 Tf 54 444 Td (WEALTH GRID.) Tj ET
+BT /F2 9 Tf 54 432 Td (With a_bar=0, use a1 in [0,a_max], concentrated near zero:) Tj ET
+BT /F2 9 Tf 54 420 Td (    a1_i = a_max [\(i-1\)/\(N_a-1\)]^kappa,  kappa>1.) Tj ET
+BT /F2 9 Tf 54 408 Td (For illustration, kappa=2 and N_a around 200 are adequate.) Tj ET
+BT /F2 9 Tf 54 396 Td (Attach masses mu_i from a parametric or empirical liquid-wealth distribution.) Tj ET
+endstream
+endobj
+14 0 obj
+<< /Length 2304 >>
+stream
+BT /F1 16 Tf 54 748 Td (Solution algorithm) Tj ET
+BT /F2 9 Tf 54 720 Td () Tj ET
+BT /F1 10 Tf 54 708 Td (Step 1. Choose wage grid {w_j}, wealth grid {a1_i}, and masses {mu_i}.) Tj ET
+BT /F2 9 Tf 54 696 Td () Tj ET
+BT /F1 10 Tf 54 684 Td (Step 2. For each wage w_j compute) Tj ET
+BT /F2 9 Tf 54 672 Td (    q_FE_j = phi/[beta Delta \(y_bar-w_j\)].) Tj ET
+BT /F2 9 Tf 54 660 Td (If 0<q_FE_j<1, compute theta_j from the analytical inversion and) Tj ET
+BT /F2 9 Tf 54 648 Td (p_j=p\(theta_j\). Otherwise mark the submarket inactive.) Tj ET
+BT /F2 9 Tf 54 636 Td () Tj ET
+BT /F1 10 Tf 54 624 Td (Step 3. For each pair \(a1_i,w_j\), solve the one-dimensional savings problem) Tj ET
+BT /F2 9 Tf 54 612 Td (over a2:) Tj ET
+BT /F2 9 Tf 54 600 Td (    max u\(R a1_i-a2\)) Tj ET
+BT /F2 9 Tf 54 588 Td (        + beta p_j Delta u\(R a2+w_j\)) Tj ET
+BT /F2 9 Tf 54 576 Td (        + beta \(1-p_j Delta\) u\(R a2+b\).) Tj ET
+BT /F2 9 Tf 54 564 Td (A convenient feasible interval is [a_bar, R a1_i-eps_c].) Tj ET
+BT /F2 9 Tf 54 552 Td () Tj ET
+BT /F1 10 Tf 54 540 Td (Step 4. For each wealth type, choose the wage index j*\(i\) giving the) Tj ET
+BT /F2 9 Tf 54 528 Td (largest optimized value. Store w_i*, theta_i*, p_i*, and a2_i*.) Tj ET
+BT /F2 9 Tf 54 516 Td () Tj ET
+BT /F1 10 Tf 54 504 Td (Step 5. Count applicants:) Tj ET
+BT /F2 9 Tf 54 492 Td (    n_j = sum_i mu_i 1{j*\(i\)=j}.) Tj ET
+BT /F2 9 Tf 54 480 Td (This is the mass of period-1 searchers in the submarket, not an unemployment rate.) Tj ET
+BT /F2 9 Tf 54 468 Td () Tj ET
+BT /F1 10 Tf 54 456 Td (Step 6. Set vacancies in each active submarket:) Tj ET
+BT /F2 9 Tf 54 444 Td (    v_j = theta_j n_j.) Tj ET
+BT /F2 9 Tf 54 432 Td (If n_j=0, set v_j=0.) Tj ET
+BT /F2 9 Tf 54 420 Td () Tj ET
+BT /F1 10 Tf 54 408 Td (Step 7. Verify free entry, theta_j=v_j/n_j, and worker optimality.) Tj ET
+BT /F2 9 Tf 54 396 Td () Tj ET
+BT /F2 9 Tf 54 384 Td (Output: a1 -> \(a2*\(a1\),w*\(a1\),theta*\(a1\),p*\(a1\)\), plus n\(w\),v\(w\).) Tj ET
+BT /F2 9 Tf 54 372 Td () Tj ET
+BT /F1 10 Tf 54 360 Td (REFERENCE) Tj ET
+BT /F2 9 Tf 54 348 Td (Repele, Amalia \(2026\), Wealth Sorting and Cyclical Employment Risk,) Tj ET
+BT /F2 9 Tf 54 336 Td (Job Market Paper, International Institute for Economic Studies,) Tj ET
+BT /F2 9 Tf 54 324 Td (Stockholm University, July 2026.) Tj ET
+endstream
+endobj
+xref
+0 15
+0000000000 65535 f 
+0000000016 00000 n 
+0000000065 00000 n 
+0000000146 00000 n 
+0000000221 00000 n 
+0000000289 00000 n 
+0000000426 00000 n 
+0000000563 00000 n 
+0000000700 00000 n 
+0000000837 00000 n 
+0000000974 00000 n 
+0000002664 00000 n 
+0000005147 00000 n 
+0000007351 00000 n 
+0000009482 00000 n 
+trailer
+<< /Size 15 /Root 1 0 R >>
+startxref
+11838
+%%EOF
