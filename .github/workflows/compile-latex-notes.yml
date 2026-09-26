@@ -21,7 +21,8 @@ jobs:
       - name: Compile LaTeX note
         uses: xu-cheng/latex-action@v3
         with:
-          root_file: 2026_2027/notes/two_period_directed_search.tex
+          working_directory: 2026_2027/notes
+          root_file: two_period_directed_search.tex
 
       - name: Commit compiled PDF
         uses: stefanzweifel/git-auto-commit-action@v5
