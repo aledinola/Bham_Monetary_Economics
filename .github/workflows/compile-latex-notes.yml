@@ -1,0 +1,30 @@
+name: Compile LaTeX notes
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - '2026_2027/notes/*.tex'
+      - '.github/workflows/compile-latex-notes.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  compile:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Compile LaTeX note
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: 2026_2027/notes/two_period_directed_search.tex
+
+      - name: Commit compiled PDF
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: Compile two-period directed-search note
+          file_pattern: 2026_2027/notes/two_period_directed_search.pdf
