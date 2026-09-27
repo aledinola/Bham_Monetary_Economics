@@ -3,6 +3,7 @@
 ## Layout and documentation
 
 - Keep all shared 2026–2027 MATLAB scripts, plain-text live scripts, helper functions and supporting workspace files in `2026_2027/matlab_codes/`. Keep dependencies together; do not create duplicate MATLAB files elsewhere in the repository.
+- Authorized self-contained exercise exception: keep `fiscal_wars_fred.m`, its eight raw FRED CSVs, two processed CSVs and `fred_series_metadata.csv` together in `2026_2027/2_seminar_classes/class_3/data_exercise/` in Dropbox and GitHub, without a duplicate in `matlab_codes/`. Its Beamer sources, compiled slides and generated figures remain in the corresponding local Dropbox folder and are not part of automatic GitHub publication. Document the exception and dependencies in the shared inventory.
 - `app1.m` is Dropbox-only at `2026_2027/1_lectures/figures/app1.m`. Never publish it or create a `2026_2027/1_lectures/` folder in this repository. Preserve the original Dropbox file and local lecture figures.
 - Maintain one `2026_2027/MATLAB_INVENTORY.md` in this repository and one at the same relative path in Dropbox, with identical contents. Include each file's purpose, teaching association, dependencies and usage; list ancillary workspace files separately. Describe `app1.m` separately using its plain-text local path.
 - Verify teaching associations from file contents and course materials; do not infer them from filenames alone. MATLAB live scripts may be `.m` files containing `%[text]` markup, not only `.mlx` files.

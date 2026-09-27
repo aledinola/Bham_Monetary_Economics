@@ -2,9 +2,11 @@
 
 Course: **40073 Monetary Economics and the Macroeconomy**, University of Birmingham, Alessandro Di Nola.
 
-Updated on **24 September 2026**. The shared MATLAB files are synchronized between Dropbox and [Bham_Monetary_Economics](https://github.com/aledinola/Bham_Monetary_Economics/tree/main/2026_2027/matlab_codes). Their contents are preserved from the [pre-reorganisation GitHub snapshot, commit `42ca70d`](https://github.com/aledinola/Bham_Monetary_Economics/tree/42ca70d40122466e1131d686f953853dffa00f08).
+Updated on **27 September 2026**. The shared MATLAB files are synchronized between Dropbox and [Bham_Monetary_Economics](https://github.com/aledinola/Bham_Monetary_Economics/tree/main/2026_2027). The original central collection retains its contents from the [pre-reorganisation GitHub snapshot, commit `42ca70d`](https://github.com/aledinola/Bham_Monetary_Economics/tree/42ca70d40122466e1131d686f953853dffa00f08). The FRED wartime fiscal exercise was added on 27 September 2026 as an authorized self-contained exception.
 
 The central teaching-code folder is **`matlab_codes/`**, containing **11 MATLAB source files and one saved workspace** in both locations. There are no `.mlx` files; the four live scripts use plain-text `.m` format. The figure generator `1_lectures/figures/app1.m` is **Dropbox-only**, preserved at its existing location because it generates plots imported by the lecture TeX files. GitHub has no `1_lectures/` folder. There are no duplicate assessment-folder copies of the shared MATLAB files.
+
+The shared collection now has **12 MATLAB source files** in total. The additional script and its data are kept together in **`2_seminar_classes/class_3/data_exercise/`**, with no duplicate in `matlab_codes/`, by explicit user instruction. Its slides and generated figures remain in that same Dropbox folder and are not published to GitHub.
 
 ## Source files
 
@@ -23,6 +25,7 @@ The shared-file links below work relative to this inventory in both Dropbox and 
 | [main_prescott.m](matlab_codes/main_prescott.m) | Script with a local function | Same Prescott calculation and supplementary-assessment calibration as `prescott.m` | Originally stored at the repository root. It implements the same calculations as `prescott.m`, with formatting differences. Both distinct files are preserved unchanged in the central folder. |
 | [main_davila.m](matlab_codes/main_davila.m) | Script with local functions | **Main Assessment 2**, competitive-equilibrium calculation; related to saving, investment and uninsurable earnings risk | Solves a two-period production economy based on Davila et al. with risky labour endowments, CRRA utility and Cobb–Douglas production. Iterates on aggregate capital, computes factor prices, solves household saving with `fminbnd`, and dampens the capital update until markets clear. Also solves the equilibrium Euler equation using `fzero`. Implements the competitive-equilibrium benchmark, not a planner solution. The model and calibration match `assignment2.tex`; no numbered lecture or seminar is stated in the script. |
 | [main.m](matlab_codes/main.m) | Basic test script | No specific lecture or seminar identified | Clears the workspace and figures, prints `Hello, world!`, assigns `x = 4` and displays it. Copied for completeness from the repository root. |
+| [fiscal_wars_fred.m](2_seminar_classes/class_3/data_exercise/fiscal_wars_fred.m) | Script | **Seminar Class 3: Robinson Crusoe Economy and Government Spending**, empirical companion | Downloads and caches eight U.S. BEA/FRED series, merges annual and quarterly observations, indexes real output, consumption and government purchases, exports three PDF figures, and saves processed data and source metadata. Confronts the one-period model with WWII and Korean War observations. These are descriptive comparisons, not estimates of causal fiscal multipliers. Uses base MATLAB; no helper functions or specialized toolboxes. |
 
 The redundant assessment-folder copy of `prescott.m` was removed after confirming it was byte-for-byte identical to the central copy. Use `matlab_codes/prescott.m` for this calculation.
 
@@ -57,6 +60,20 @@ These are figure basenames; the script exports `.png` and `.eps` versions. It al
 | --- | --- | --- |
 | [matlab.mat](matlab_codes/matlab.mat) | Saved workspace copied from the GitHub figure folder. The earlier MATLAB `whos -file` inspection reported 23 variables, including plotting settings, a graphics text object, asset-price/time vectors and labour-market parameters. The names are consistent with the Lecture 9–10 sections of `app1.m`; the file does not identify a specific lecture or exercise. | No. None of the source files listed here loads this workspace. Included for completeness. |
 
+## FRED exercise data and outputs
+
+All files below are in `2_seminar_classes/class_3/data_exercise/`, beside `fiscal_wars_fred.m`. Raw CSVs are downloaded from `https://fred.stlouisfed.org/graph/fredgraph.csv?id=SERIES_ID` only when absent. The script tries MATLAB `websave` first and invokes `curl` on PATH if the HTTP download fails; current Windows includes curl. Cached reruns need neither network access nor curl. Keep the raw files to reproduce the saved vintage; deliberate refreshes require removing the relevant raw files and rechecking FRED metadata.
+
+| Files | Role |
+| --- | --- |
+| `GDPCA.csv`, `PCECCA.csv`, `GCECA.csv`, `A824RE1A156NBEA.csv` | Raw annual real GDP, real personal consumption, real government consumption and gross investment, and federal national defense share of GDP. First-run internet access is required; cached files support offline reruns. |
+| `GDPC1.csv`, `PCECC96.csv`, `GCEC1.csv`, `A824RE1Q156NBEA.csv` | Quarterly counterparts for the Korean War appendix. The three real series are seasonally adjusted annual rates; the published defense share is not seasonally adjusted. |
+| `fred_series_metadata.csv` | Exact series titles, units, frequency, seasonal adjustment, source/download URLs, metadata verification date, retrieval timestamps in UTC, and raw observation coverage. Preserves retrieval timestamps on cached reruns. |
+| `fiscal_wars_processed.csv` | Annual data for 1929–1960: dates, original `gdp`, `cons`, `gov`, `def_share`, and three indices with 1939 = 100. The WWII plot uses 1935–1950. |
+| `fiscal_wars_quarterly_processed.csv` | Quarterly data for 1947Q1–1955Q4, with the same original quantities/share and indices with 1950Q1 = 100. |
+
+The script, eight raw CSVs, both processed CSVs and metadata are synchronized with GitHub. The local PDF figures (`wwii_y_c_g.pdf`, `defense_share_gdp.pdf`, `korean_war_y_c_g.pdf`) are reproducible script outputs. The local `fiscal_wars_slides.tex` and `fiscal_wars_slides.pdf` provide six main slides plus one appendix slide. Presentation sources, compiled slides and generated figures are Dropbox-only. The original exercise brief is also local.
+
 ## Running the material
 
 - **Lecture 4:** open `matlab_codes/lecture4_extra.m` in MATLAB's Live Editor and run the whole file once before experimenting with individual sections. Both Huggett helpers are in that same folder; make `matlab_codes` the current folder or add it to the MATLAB path.
@@ -64,6 +81,7 @@ These are figure basenames; the script exports `.png` and `.eps` versions. It al
 - **Lecture 5:** open `matlab_codes/lecture5_investment.m` in the Live Editor and run sections in order. All calculations are contained in this file; no external helper or data files are required.
 - **Seminar Class 1:** open `matlab_codes/seminar_class_1_matlab.m` in the Live Editor and run its sections in order. It has no external code or data dependencies. Its embedded `seminar_class_1.pdf` link assumes its former location and does not resolve from the central folder; the PDF remains in Dropbox at `2_seminar_classes/class_1/` and is not published in this repository. The script itself is unchanged.
 - **Live-script format:** these `.m` files contain `%[text]` markup for MATLAB's Live Editor.
+- **Seminar Class 3, wartime fiscal data:** run `2_seminar_classes/class_3/data_exercise/fiscal_wars_fred.m` in full. Paths are resolved relative to the script, so another starting working directory is supported. Data validation rejects missing plotting observations rather than interpolating. Real indices are checked numerically at their base dates. Government purchases exclude transfers and debt interest; chained-dollar components are not additive. Source notes and the accompanying local slides distinguish observed consumption from counterfactual crowding out.
 - **Prescott calculation:** run `prescott` or `main_prescott` from `matlab_codes`. Each defines its own local `solve_country` helper. Both clear the workspace and close figures.
 - **Davila calculation:** run `main_davila` from `matlab_codes`. All its functions are defined inside the file. It clears the workspace and closes figures.
 - **Figure generator (Dropbox only):** use `app1.m` section by section in a separate output folder. It clears variables, closes figures and writes PNG/EPS files with fixed names. Some sections reuse output names, notably `lec10_4`, so a full run overwrites earlier versions. No external input files are loaded.
@@ -71,8 +89,10 @@ These are figure basenames; the script exports `.png` and `.eps` versions. It al
 
 ## Coverage and verification
 
-The shared collection contains 11 source files and one saved workspace, all under `matlab_codes/`. Lecture, seminar, assessment and repository-root MATLAB files were consolidated there without changing their contents. The previously GitHub-only `lecture5_investment.m` was copied unchanged into Dropbox. GitHub's `app1.m` was removed; the original Dropbox file remains in place.
+The shared collection contains 12 source files and one saved workspace: 11 sources and the saved workspace under `matlab_codes/`, plus the self-contained FRED script in `2_seminar_classes/class_3/data_exercise/`. The earlier consolidation preserved the original files' contents. The previously GitHub-only `lecture5_investment.m` was copied unchanged into Dropbox. GitHub's `app1.m` was removed; the original Dropbox file remains in place.
 
-Verification for this reorganisation compares exact file hashes and relative paths, checks inventory coverage and documentation links, and confirms that the two inventory copies match. The shared files retain the exact contents of the pre-reorganisation GitHub snapshot linked above. No MATLAB execution, code formatting, code edits or numerical tests are part of this task.
+Verification of the earlier reorganisation compared exact file hashes and relative paths, inventory coverage and documentation links, and the two inventory copies. That reorganisation did not involve MATLAB execution or numerical tests. The original central files retain the pre-reorganisation contents linked above.
+
+The FRED exercise is separately checked through a full MATLAB download/process/export run, a cached rerun, complete annual and quarterly teaching-window coverage, and exact base-date normalization checks. Its local deck is compiled and visually inspected. Publication compares file hashes and relative paths against GitHub and confirms that the two inventory copies match.
 
 Existing lecture-figure and seminar/assessment associations are retained from the earlier review of local teaching sources. The new Lecture 4 and Lecture 5 entries follow their script contents and stated lecture associations. The workspace-variable description records an earlier inspection; it does not imply MATLAB was run for this reorganisation.
