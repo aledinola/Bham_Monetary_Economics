@@ -2,11 +2,11 @@
 
 Course: **40073 Monetary Economics and the Macroeconomy**, University of Birmingham, Alessandro Di Nola.
 
-Updated on **27 September 2026**. The shared MATLAB files are synchronized between Dropbox and [Bham_Monetary_Economics](https://github.com/aledinola/Bham_Monetary_Economics/tree/main/2026_2027). The original central collection retains its contents from the [pre-reorganisation GitHub snapshot, commit `42ca70d`](https://github.com/aledinola/Bham_Monetary_Economics/tree/42ca70d40122466e1131d686f953853dffa00f08). The FRED wartime fiscal exercise was added on 27 September 2026 as an authorized self-contained exception.
+Updated on **8 October 2026**. The shared MATLAB files are synchronized between Dropbox and [Bham_Monetary_Economics](https://github.com/aledinola/Bham_Monetary_Economics/tree/main/2026_2027). The original central collection retains its contents from the [pre-reorganisation GitHub snapshot, commit `42ca70d`](https://github.com/aledinola/Bham_Monetary_Economics/tree/42ca70d40122466e1131d686f953853dffa00f08). The FRED wartime fiscal exercise was added on 27 September 2026 as an authorized self-contained exception.
 
-The central teaching-code folder is **`matlab_codes/`**, containing **11 MATLAB source files and one saved workspace** in both locations. There are no `.mlx` files; the four live scripts use plain-text `.m` format. The figure generator `1_lectures/figures/app1.m` is **Dropbox-only**, preserved at its existing location because it generates plots imported by the lecture TeX files. GitHub has no `1_lectures/` folder. There are no duplicate assessment-folder copies of the shared MATLAB files.
+The central teaching-code folder is **`matlab_codes/`**, containing **12 MATLAB source files and one saved workspace** in both locations. There are no `.mlx` files; the four live scripts use plain-text `.m` format. The figure generator `1_lectures/figures/app1.m` is **Dropbox-only**, preserved at its existing location because it generates plots imported by the lecture TeX files. GitHub has no `1_lectures/` folder. There are no duplicate assessment-folder copies of the shared MATLAB files.
 
-The shared collection now has **12 MATLAB source files** in total. The additional script and its data are kept together in **`2_seminar_classes/class_3/data_exercise/`**, with no duplicate in `matlab_codes/`, by explicit user instruction. Its slides and generated figures remain in that same Dropbox folder and are not published to GitHub.
+The shared collection now has **13 MATLAB source files** in total. The FRED script and its data are kept together in **`2_seminar_classes/class_3/data_exercise/`**, with no duplicate in `matlab_codes/`, by explicit user instruction. Its slides and generated figures remain in that same Dropbox folder and are not published to GitHub.
 
 ## Source files
 
@@ -14,6 +14,7 @@ The shared-file links below work relative to this inventory in both Dropbox and 
 
 | File | Type | Accompanies | What it does |
 | --- | --- | --- | --- |
+| [walrasian_auctioneer.m](matlab_codes/walrasian_auctioneer.m) | Script | **Lecture 2: A Simple Macro Model, Equilibrium & Welfare Theorems**, Walrasian auctioneer supplement | Computes an approximate competitive equilibrium in the Robinson Crusoe economy. Obtains firm labour demand and profits at a trial wage, solves household labour supply using `fzero`, and adjusts the wage using relative excess demand. Plots the wage and relative excess-demand paths, reports the resulting wage and allocation, and compares consumption and labour with the social planner solution. Uses base MATLAB with no external code or data dependencies. |
 | [lecture4_extra.m](matlab_codes/lecture4_extra.m) | Plain-text live script | **Lecture 4: Consumption, Saving, Interest Rates** | Solves a simple two-period Huggett-style pure-exchange economy using the gross interest rate `R`. Illustrates household bond demand and zero-net-supply bond-market clearing, compares the numerical equilibrium with the closed-form interest rate, and gives a short application showing how higher expected future income and greater earnings risk affect the equilibrium rate. |
 | [huggett_household.m](matlab_codes/huggett_household.m) | Function | **Lecture 4**, helper for `lecture4_extra.m` | Computes optimal bond holdings at a given gross interest rate `R`. Uses `fzero` on the household Euler equation over the interval implied by positive consumption. Returns bond holdings and consumption in the two periods. |
 | [huggett_equilibrium.m](matlab_codes/huggett_equilibrium.m) | Function | **Lecture 4**, helper for `lecture4_extra.m` | Calls `huggett_household` and uses a simple bisection directly on the gross interest rate `R` until desired bond holdings are approximately zero. Returns the equilibrium gross rate, bond holdings and consumption. |
@@ -76,6 +77,7 @@ The script, eight raw CSVs, both processed CSVs and metadata are synchronized wi
 
 ## Running the material
 
+- **Lecture 2, Walrasian auctioneer:** run `matlab_codes/walrasian_auctioneer.m` in full. It is a standalone base-MATLAB script with no external data or helpers; it clears the workspace and closes figures. At the supplied settings, it performs exactly 50 wage updates, using relative excess demand `(labour demand - labour supply)/(labour demand + labour supply)` and adjustment speed `lambda = 0.1`. Its opening comments and the lecture supplement describe a tolerance-based stopping rule, but the current code does not implement that check. Inspect the residual and planner comparison rather than treating the iteration cap as a convergence guarantee.
 - **Lecture 4:** open `matlab_codes/lecture4_extra.m` in MATLAB's Live Editor and run the whole file once before experimenting with individual sections. Both Huggett helpers are in that same folder; make `matlab_codes` the current folder or add it to the MATLAB path.
 - **Lecture 4, precautionary saving:** open `matlab_codes/lecture4_precautionary_saving.m` in the Live Editor and run sections in order. Keep `hh_objective_precautionary.m` in that same folder and make it the current folder or add it to the MATLAB path.
 - **Lecture 5:** open `matlab_codes/lecture5_investment.m` in the Live Editor and run sections in order. All calculations are contained in this file; no external helper or data files are required.
@@ -89,10 +91,12 @@ The script, eight raw CSVs, both processed CSVs and metadata are synchronized wi
 
 ## Coverage and verification
 
-The shared collection contains 12 source files and one saved workspace: 11 sources and the saved workspace under `matlab_codes/`, plus the self-contained FRED script in `2_seminar_classes/class_3/data_exercise/`. The earlier consolidation preserved the original files' contents. The previously GitHub-only `lecture5_investment.m` was copied unchanged into Dropbox. GitHub's `app1.m` was removed; the original Dropbox file remains in place.
+The shared collection contains 13 source files and one saved workspace: 12 sources and the saved workspace under `matlab_codes/`, plus the self-contained FRED script in `2_seminar_classes/class_3/data_exercise/`. The earlier consolidation preserved the original files' contents. The previously GitHub-only `lecture5_investment.m` was copied unchanged into Dropbox. GitHub's `app1.m` was removed; the original Dropbox file remains in place.
 
 Verification of the earlier reorganisation compared exact file hashes and relative paths, inventory coverage and documentation links, and the two inventory copies. That reorganisation did not involve MATLAB execution or numerical tests. The original central files retain the pre-reorganisation contents linked above.
 
 The FRED exercise is separately checked through a full MATLAB download/process/export run, a cached rerun, complete annual and quarterly teaching-window coverage, and exact base-date normalization checks. Its local deck is compiled and visually inspected. Publication compares file hashes and relative paths against GitHub and confirms that the two inventory copies match.
 
 Existing lecture-figure and seminar/assessment associations are retained from the earlier review of local teaching sources. The new Lecture 4 and Lecture 5 entries follow their script contents and stated lecture associations. The workspace-variable description records an earlier inspection; it does not imply MATLAB was run for this reorganisation.
+
+The Lecture 2 auctioneer script was added on 8 October 2026 and preserved byte-for-byte. Its inventory entry follows a full source inspection, including the fixed iteration count and absence of a tolerance-based stopping check. No MATLAB execution or numerical convergence test was performed for this addition. Publication verifies the script and inventory against the remote repository.
