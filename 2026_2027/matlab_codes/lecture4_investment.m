@@ -1,5 +1,5 @@
-%[text] # Lecture 5: Investment and Capital Accumulation in MATLAB
-%[text] **Companion to Lecture 5, 2026/2027.** This live script uses the two-period models from the lecture to study investment, capital demand, general equilibrium, productivity shocks, and the role of the intertemporal elasticity of substitution (IES).
+%[text] # Lecture 4: Investment and Capital Accumulation in MATLAB
+%[text] **Companion to Lecture 4, 2026/2027.** This live script uses the two-period models from the lecture to study investment, capital demand, general equilibrium, productivity shocks, and the role of the intertemporal elasticity of substitution (IES).
 %[text] Open this plain-text `.m` file in MATLAB's **Live Editor** and run the sections in order. It uses only base MATLAB.
 %[text] The emphasis is on economic interpretation. Before running each comparative-static section, write down your prediction.
 %
@@ -95,7 +95,7 @@ grid on
 
 %%
 %[text] # 2. Dynamic general equilibrium with capital accumulation
-%[text] We now use the general-equilibrium model from Lecture 5. Production is linear:
+%[text] We now use the general-equilibrium model from Lecture 4. Production is linear:
 %[text] $Y_t=A_tK_t.$
 %[text] Depreciation is complete, so
 %[text] $K_2=I_1.$
@@ -223,7 +223,7 @@ grid on
 %[text] 1. What happens when $\sigma<1$?
 %[text] 2. What happens when $\sigma=1$?
 %[text] 3. What happens when $\sigma>1$?
-%[text] **Question 7.** For the Lecture 5 case $\sigma>1$, explain why lower future productivity can lead to *higher* investment today even though the return on investment has fallen. Your explanation should use consumption smoothing.
+%[text] **Question 7.** For the Lecture 4 case $\sigma>1$, explain why lower future productivity can lead to *higher* investment today even though the return on investment has fallen. Your explanation should use consumption smoothing.
 
 %%
 %[text] ## 4.1 The saving rate itself

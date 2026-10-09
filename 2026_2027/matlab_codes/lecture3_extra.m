@@ -1,5 +1,5 @@
-%[text] # Lecture 4 extra: a two-period Huggett economy
-%[text] This notebook extends the two-period consumption-saving model from Lecture 4 by adding uninsurable income risk and a bond market in zero net supply.
+%[text] # Lecture 3 extra: a two-period Huggett economy
+%[text] This notebook extends the two-period consumption-saving model from Lecture 3 by adding uninsurable income risk and a bond market in zero net supply.
 %[text] The aim is to introduce the main economic idea behind a Huggett economy in the simplest possible setting.
 %
 %[text] ## 1. The model

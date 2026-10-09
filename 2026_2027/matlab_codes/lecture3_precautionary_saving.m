@@ -1,4 +1,4 @@
-%[text] # Lecture 4: Precautionary saving in a two-period model
+%[text] # Lecture 3: Precautionary saving in a two-period model
 %[text] We extend the simple two-period consumption-saving model by introducing risky income in period 2.
 %[text]
 %[text] Period-1 income is
