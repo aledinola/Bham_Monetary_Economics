@@ -5,9 +5,9 @@
 %[text] ## 1. The model
 %[text] There is a unit mass of ex-ante identical households. Income today is the same for everyone, while future income is uncertain:
 %[text] $y_1=1,\qquad y_2\in\{y_L,y_H\}.$
-%[text] A household can buy a one-period bond. Let $a$ denote the amount the bond pays next period. The gross interest rate is $R$, so buying one unit of future payoff costs $1/R$ today.
+%[text] A household can buy a one-period bond. Let $a$ denote saving today. The gross interest rate is $R$, so the bond pays $Ra$ next period.
 %[text] The budget constraints are
-%[text] $c_1=y_1-\frac{a}{R},\qquad c_2(z)=y_2(z)+a.$
+%[text] $c_1=y_1-a,\qquad c_2(z)=y_2(z)+Ra.$
 %[text] Positive $a$ means saving and negative $a$ means borrowing.
 %[text] Preferences are CRRA:
 %[text] $u(c)=\frac{c^{1-\sigma}-1}{1-\sigma},\qquad u'(c)=c^{-\sigma}.$
@@ -30,7 +30,7 @@ Rtrial = 1;
 [aTrial, c1Trial, c2Trial] = huggett_household(Rtrial, par);
 
 trialResults = table(Rtrial, aTrial, c1Trial, c2Trial(1), c2Trial(2), ...
-    'VariableNames', {'R', 'Assets', 'c1', 'c2Low', 'c2High'});
+    'VariableNames', {'R', 'Saving', 'c1', 'c2Low', 'c2High'});
 disp(trialResults)
 
 %[text] With future income risk, the household has a precautionary motive to save.
@@ -49,7 +49,7 @@ figure
 plot(Rgrid, assetDemand, 'LineWidth', 2)
 yline(0, 'k:')
 xlabel('Gross interest rate R')
-ylabel('Desired assets a(R)')
+ylabel('Desired saving a(R)')
 title('Household asset demand')
 grid on
 
@@ -60,10 +60,10 @@ grid on
 [Rstar, astar, c1star, c2star] = huggett_equilibrium(par);
 
 equilibriumResults = table(Rstar, 100 * (Rstar - 1), astar, ...
-    'VariableNames', {'GrossReturn', 'NetRatePercent', 'Assets'});
+    'VariableNames', {'GrossReturn', 'NetRatePercent', 'Saving'});
 disp(equilibriumResults)
 
-%[text] Because equilibrium assets are zero, the Euler equation also gives a closed-form expression:
+%[text] Because equilibrium saving is zero, the Euler equation also gives a closed-form expression:
 %[text] $y_1^{-\sigma}=\beta R^* E[y_2^{-\sigma}],$
 %[text] so
 %[text] $R^*=\frac{y_1^{-\sigma}}{\beta E[y_2^{-\sigma}]}.$
@@ -122,4 +122,4 @@ ylabel('Annual net real interest rate (%)')
 title('Expected income and precautionary saving')
 grid on
 
-%[text] **Takeaway.** Higher expected future income pushes the interest rate up. More uninsurable future income risk pushes it down. In every equilibrium, aggregate bond holdings are still zero.
+%[text] **Takeaway.** Higher expected future income pushes the interest rate up. More uninsurable future income risk pushes it down. In every equilibrium, aggregate saving is still zero.
