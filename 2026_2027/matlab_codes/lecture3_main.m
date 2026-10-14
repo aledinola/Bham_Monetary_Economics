@@ -25,9 +25,12 @@ for i = 1:2
     c2(i) = y2(i)+(1+r)*a(i);
 end
 
-assert(all(exitflag > 0), 'The saving optimization did not converge.');
-assert(all(isfinite([a; c1; c2])) && all([c1; c2] > 0), ...
-    'The solution must be finite with positive consumption.');
+if ~all(exitflag > 0)
+    error('The saving optimization did not converge.');
+end
+if ~all(isfinite([a; c1; c2])) || ~all([c1; c2] > 0)
+    error('The solution must be finite with positive consumption.');
+end
 
 % Both choose c1 = c2 = 1, up to numerical solver tolerance.
 % Ann saves 0.5; Bob borrows 0.5. Income timing changes a, not consumption.
