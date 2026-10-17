@@ -51,11 +51,83 @@ end
 
 figure
 plot(Rgrid, assetDemand, 'LineWidth', 2)
-yline(0, 'k:')
+yline(0, 'k:', 'Zero net bond supply', ...
+    'LabelHorizontalAlignment', 'left', 'HandleVisibility', 'off')
 xlabel('Gross interest rate R')
-ylabel('Desired saving a(R)')
+ylabel('Saving today a^d(R)')
 title('Household asset demand')
 grid on
+xlim([Rgrid(1), Rgrid(end)])
+ylim([-0.4, 0.2])
+
+%% Comparative statics 1: higher beta
+%[text] Compare the benchmark with more patient households, changing only beta.
+%[text] Rows of assetDemandBeta correspond to R; columns correspond to beta.
+%[text] Predict the direction of the shift before running this section.
+
+betaGrid = [par.beta, 0.99];
+nBeta = numel(betaGrid);
+assetDemandBeta = zeros(nR, nBeta);
+
+for j = 1:nBeta
+    pBeta = par;                    % Start from the benchmark
+    pBeta.beta = betaGrid(j);        % Change only patience
+
+    for i = 1:nR
+        assetDemandBeta(i,j) = huggett_household(Rgrid(i), pBeta);
+    end
+end
+
+figBeta = figure;
+plot(Rgrid, assetDemandBeta, 'LineWidth', 2)
+yline(0, 'k:', 'Zero net bond supply', ...
+    'LabelHorizontalAlignment', 'left', 'HandleVisibility', 'off')
+xlabel('Gross interest rate R')
+ylabel('Saving today a^d(R)')
+title('Household asset demand: higher beta')
+legend(compose('beta = %.2f', betaGrid), 'Location', 'best')
+grid on
+xlim([Rgrid(1), Rgrid(end)])
+ylim([-0.4, 0.2])
+
+%[text] Higher beta raises desired saving at a given R: the curve shifts upward.
+%[text] Where does each curve cross zero saving? What happens to the equilibrium R?
+
+%% Comparative statics 2: higher income risk
+%[text] Start again from the benchmark, keeping beta and mean future income fixed.
+%[text] Each state has probability one half. A larger epsilon spreads the two incomes farther apart.
+%[text] Rows of assetDemandRisk correspond to R; columns correspond to epsilon.
+
+meanIncomeRisk = (par.y2_L + par.y2_H) / 2;
+epsilonGrid = [(par.y2_H - par.y2_L) / 2, 0.40];
+nEpsilon = numel(epsilonGrid);
+assetDemandRisk = zeros(nR, nEpsilon);
+
+for j = 1:nEpsilon
+    pRisk = par;                    % Reset to the benchmark, including beta
+    pRisk.prob_L = 0.5;
+    pRisk.y2_L = meanIncomeRisk - epsilonGrid(j);
+    pRisk.y2_H = meanIncomeRisk + epsilonGrid(j);
+
+    for i = 1:nR
+        assetDemandRisk(i,j) = huggett_household(Rgrid(i), pRisk);
+    end
+end
+
+figRisk = figure;
+plot(Rgrid, assetDemandRisk, 'LineWidth', 2)
+yline(0, 'k:', 'Zero net bond supply', ...
+    'LabelHorizontalAlignment', 'left', 'HandleVisibility', 'off')
+xlabel('Gross interest rate R')
+ylabel('Saving today a^d(R)')
+title('Household asset demand: higher income risk')
+legend(compose('epsilon = %.2f', epsilonGrid), 'Location', 'best')
+grid on
+xlim([Rgrid(1), Rgrid(end)])
+ylim([-0.4, 0.2])
+
+%[text] Greater income risk raises precautionary saving: the curve shifts upward.
+%[text] Try another epsilon below meanIncomeRisk, then explain what happens to the zero crossing.
 
 %% General equilibrium
 %[text] In equilibrium, the interest rate adjusts until the bond market clears:
