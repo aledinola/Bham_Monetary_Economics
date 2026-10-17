@@ -1,15 +1,16 @@
-function [R, a, c1, c2] = huggett_equilibrium(par)
+function [R, a, c1, c2_L, c2_H] = huggett_equilibrium(par)
 % HUGGETT_EQUILIBRIUM Find the gross interest rate that clears the bond market.
 %
 % INPUTS:
-% par: Structure with preferences, scalar current income, and equally sized
-%      future-income and probability column vectors
+% par: Structure with preferences, scalar current income, ordered scalar
+%      future incomes y2_L <= y2_H, and low-state probability prob_L
 %
 % OUTPUTS:
-% R:  Scalar equilibrium gross interest rate
-% a:  Scalar saving today; zero net bond supply requires a = 0
-% c1: Scalar current consumption
-% c2: Future consumption column vector (same size as par.y2)
+% R:    Scalar equilibrium gross interest rate
+% a:    Scalar saving today; zero net bond supply requires a = 0
+% c1:   Scalar current consumption
+% c2_L: Scalar future consumption in the low-income state
+% c2_H: Scalar future consumption in the high-income state
 %
 % Bisection stops when abs(a) < 1e-10, with at most 100 iterations.
 
@@ -20,7 +21,7 @@ tol = 1e-10;
 for iter = 1:100
 
     R = (Rlow + Rhigh) / 2;
-    [a, c1, c2] = huggett_household(R, par);
+    [a, c1, c2_L, c2_H] = huggett_household(R, par);
 
     if abs(a) < tol
         return
