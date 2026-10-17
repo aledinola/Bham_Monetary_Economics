@@ -9,8 +9,9 @@
 %[text] The budget constraints are
 %[text] $c_1=y_1-a,\qquad c_2(z)=y_2(z)+Ra.$
 %[text] Positive $a$ means saving and negative $a$ means borrowing.
-%[text] Preferences are CRRA:
-%[text] $u(c)=\frac{c^{1-\sigma}-1}{1-\sigma},\qquad u'(c)=c^{-\sigma}.$
+%[text] We use log utility, the CRRA special case with $\sigma=1$:
+%[text] $u(c)=\log c,\qquad u'(c)=1/c.$
+%[text] The code retains the general marginal utility $u'(c)=c^{-\sigma}$, so other positive values of $\sigma$ can also be used. For $\sigma\ne1$, CRRA utility is $u(c)=(c^{1-\sigma}-1)/(1-\sigma)$.
 %[text] The household Euler equation is
 %[text] $u'(c_1)=\beta R\,E[u'(c_2)].$
 %[text] The bond is in zero net supply. Since all households are identical when they choose $a$, equilibrium requires
@@ -18,7 +19,7 @@
 %
 %[text] ### Parameters
 par.beta = 0.96;
-par.sigma = 2;
+par.sigma = 1;
 par.y1 = 1;
 par.y2 = [0.8; 1.2];
 par.prob = [0.5; 0.5];
@@ -33,7 +34,7 @@ trialResults = table(Rtrial, aTrial, c1Trial, c2Trial(1), c2Trial(2), ...
     'VariableNames', {'R', 'Saving', 'c1', 'c2Low', 'c2High'});
 disp(trialResults)
 
-%[text] With future income risk, the household has a precautionary motive to save.
+%[text] At $R=1$, precautionary saving exactly offsets impatience and desired saving is zero. Without income risk at the same mean, the household would borrow; risk raises saving relative to that certainty benchmark.
 %
 %[text] ### Asset demand as a function of R
 %[text] A higher return makes saving more attractive.
@@ -67,6 +68,7 @@ disp(equilibriumResults)
 %[text] $y_1^{-\sigma}=\beta R^* E[y_2^{-\sigma}],$
 %[text] so
 %[text] $R^*=\frac{y_1^{-\sigma}}{\beta E[y_2^{-\sigma}]}.$
+%[text] With log utility and two equally likely states, this simplifies to $R^*=\frac{1/y_1}{(\beta/2)(1/y_L+1/y_H)}$. Writing $y_L=\bar y_2-\varepsilon$ and $y_H=\bar y_2+\varepsilon$ gives $R^*=(\bar y_2^2-\varepsilon^2)/(\beta y_1\bar y_2)$.
 
 Rexact = par.y1^(-par.sigma) / ...
     (par.beta * sum(par.prob .* par.y2.^(-par.sigma)));
@@ -87,7 +89,6 @@ years = 10;
 ai = par;
 ai.beta = 0.98^years;
 ai.y1 = 1;
-ai.sigma = 2;
 
 meanBase = 1.01^years;
 meanBoom = 1.15 * meanBase;
