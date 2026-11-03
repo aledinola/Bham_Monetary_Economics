@@ -1,6 +1,10 @@
 # Monetary Economics and the Macroeconomy
 
-MATLAB material for the MSc MBF course at the University of Birmingham, taught by Alessandro Di Nola.
+Teaching material for the MSc MBF course at the University of Birmingham, taught by Alessandro Di Nola.
+
+## Seminar material for 2026–2027
+
+- [Seminar Class 2 — Problems and Solutions (PDF)](2026_2027/2_seminar_classes/class_2/seminar_class_2_sol.pdf)
 
 ## MATLAB material for 2026–2027
 
