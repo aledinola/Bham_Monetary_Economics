@@ -1,0 +1,56 @@
+name: Publish three lecture PDFs (one-time)
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/publish-lecture-pdfs-once.yml'
+permissions:
+  contents: write
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download the three PDFs from Dropbox
+        env:
+          PDF_URL_1: "https://uc95b9df1600baa12777cbae728f.dl.dropboxusercontent.com/cd/0/get/DLUD2a3csiK2akJr2_AoevN543goJLdTKbcoY6xyByvJxn4GTEDQwIZnGNy7bSvNSVp3NZxc9qy6dxrS9oaDXUMPW-4I3wYp4yWibWUTv-087Tx6-1sRbTn7ZW7prU67Lqee5nhMjFGmNv4STzZqYY7-uzTYcFCYfXukVC9HxEHeyw/file?c_luid=8e89e30a"
+          PDF_URL_2: "https://uc6367c734aa620219301d7725b2.dl.dropboxusercontent.com/cd/0/get/DLWEU8DUvN6SZ0UBPDp3944NnVyfE1EczQYXvm6sCdSGF2YvtCL5r6MF2TLDeNmhIzbqRkTn8c9LBkXQlYQVL3oYbI5IPrKeYjIDz_w1vG3BV6ZRCGQTQL4s-PQTJUsE-iogG8lvNcNxvbChxjTTU-Bc8XveLHAylgzcTz7dy2l-fQ/file?c_luid=8e89e30a"
+          PDF_URL_3: "https://uc589ef2a78e558c7133c17a19ef.dl.dropboxusercontent.com/cd/0/get/DLXAdJGW1g2CoV486PDY2fb6WFfBkwKMgnPnyQAoCu5B0IJGT-mAbmceC-H3WtR8otx1r8_8VK_8sj3PWd5lLdi83E2KD-rZPuz7-qdBHNVerKnNksvmg_hQ87XnHRoyQUF8HuJkYG0x6rdI3GKg43_mWC_Q9jGxKaZlvpyOp_NoIw/file?c_luid=8e89e30a"
+        run: |
+          set -euo pipefail
+          mkdir -p 2026_2027/slides
+          curl --fail --silent --show-error --location --output "2026_2027/slides/Lecture3_swp.pdf" "$PDF_URL_1"
+          curl --fail --silent --show-error --location --output "2026_2027/slides/Lecture4_swp.pdf" "$PDF_URL_2"
+          curl --fail --silent --show-error --location --output "2026_2027/slides/Lecture4_model_writeup.pdf" "$PDF_URL_3"
+      - name: Validate PDFs against Dropbox hashes
+        run: |
+          python3 - <<'PY'
+          import hashlib
+          from pathlib import Path
+          expected = [{"name":"Lecture3_swp.pdf","size":4279674,"hash":"d9bcc2afb63b0394f2cb622d12e03efda15b2bc76a4e843257655c4dcf58924f"},{"name":"Lecture4_swp.pdf","size":1108574,"hash":"a9a3126a72b628824e45fbcb87a82860f7c3a9213360f99ef97292ef3151725d"},{"name":"Lecture4_model_writeup.pdf","size":217947,"hash":"a26c0427f9425c71528adb61d864f2705e2a1fd991547ff78e44c53d31063746"}]
+          for item in expected:
+              path = Path('2026_2027/slides') / item['name']
+              assert path.stat().st_size == item['size'], f'Size mismatch: {path}'
+              with path.open('rb') as stream:
+                  assert stream.read(5) == b'%PDF-', f'Not a PDF: {path}'
+                  stream.seek(0)
+                  combined = hashlib.sha256()
+                  while True:
+                      data = stream.read(4 * 1024 * 1024)
+                      if not data:
+                          break
+                      combined.update(hashlib.sha256(data).digest())
+              assert combined.hexdigest() == item['hash'], f'Content mismatch: {path}'
+              print('Verified', item['name'], item['size'], 'bytes')
+          PY
+      - name: Commit files and remove temporary workflow
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- "2026_2027/slides/Lecture3_swp.pdf"
+          git add -- "2026_2027/slides/Lecture4_swp.pdf"
+          git add -- "2026_2027/slides/Lecture4_model_writeup.pdf"
+          git rm -- .github/workflows/publish-lecture-pdfs-once.yml
+          git commit -m 'Publish Lecture 3 and 4 slides and model writeup (2026-2027)'
+          git push origin HEAD:main
