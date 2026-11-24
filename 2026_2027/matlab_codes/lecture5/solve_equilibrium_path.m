@@ -10,6 +10,8 @@ function path = solve_equilibrium_path(par, ss, u_z, u_v, z_initial, v_initial)
 %
 % OUTPUTS:
 % path: Structure of T-by-1 series. z and all _hat fields are log deviations.
+%       I_hat is the log deviation of the gross nominal rate I_t = 1 + i_t.
+%       E_R_hat gives the expected log deviation of the gross real rate.
 %       pi is net inflation and v is the policy disturbance, both in decimals.
 
 assert(isvector(u_z) && isvector(u_v) && numel(u_z) == numel(u_v), ...
@@ -36,10 +38,10 @@ path.N_hat = (1 - par.sigma) / par.D * z;
 path.C_hat = par.b * z;
 path.Y_hat = path.C_hat;
 path.w_hat = (par.psi + par.sigma) / par.D * z;
-path.R_real_hat = par.sigma * par.b * (par.rho_z - 1) * z;
+path.E_R_hat = par.sigma * par.b * (par.rho_z - 1) * z;
 
 % 3. First-order inflation, gross nominal return and real money demand.
 path.pi = par.a_z * z + par.a_v * v;
-path.R_hat = (par.phi_pi * path.pi + v) / ss.R;
-path.m_hat = par.sigma * path.C_hat - path.R_hat / ss.i;
+path.I_hat = (par.phi_pi * path.pi + v) / ss.I;
+path.m_hat = par.sigma * path.C_hat - path.I_hat / ss.i;
 end %end function
