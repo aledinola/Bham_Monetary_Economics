@@ -1,0 +1,45 @@
+function path = solve_equilibrium_path(par, ss, u_z, u_v, z_initial, v_initial)
+% SOLVE_EQUILIBRIUM_PATH Compute the response to a sequence of innovations.
+%
+% INPUTS:
+% par: Scalar structure with the parameters and coefficients from main.m.
+% ss: Scalar steady-state structure returned by solve_steady_state.
+% u_z, u_v: Equal-length T-element vectors of realized TFP and policy
+%           innovations, respectively. The first element is quarter 0.
+% z_initial, v_initial: Scalar states in the quarter before the first shock.
+%
+% OUTPUTS:
+% path: Structure of T-by-1 series. z and all _hat fields are log deviations.
+%       pi is net inflation and v is the policy disturbance, both in decimals.
+
+assert(isvector(u_z) && isvector(u_v) && numel(u_z) == numel(u_v), ...
+       'Supply two innovation vectors of the same length.');
+
+% 1. Update the two states using the innovations supplied by the caller.
+T = numel(u_z);
+z = zeros(T,1);
+v = zeros(T,1);
+z_previous = z_initial;
+v_previous = v_initial;
+for t = 1:T
+    z(t) = par.rho_z * z_previous + u_z(t);
+    v(t) = par.rho_v * v_previous + u_v(t);
+    z_previous = z(t);
+    v_previous = v(t);
+end
+path.z = z;
+path.v = v;
+
+% 2. The real allocation is exact in logs. The Euler equation gives the
+%    gross expected real return to first order via expected consumption growth.
+path.N_hat = (1 - par.sigma) / par.D * z;
+path.C_hat = par.b * z;
+path.Y_hat = path.C_hat;
+path.w_hat = (par.psi + par.sigma) / par.D * z;
+path.R_real_hat = par.sigma * par.b * (par.rho_z - 1) * z;
+
+% 3. First-order inflation, gross nominal return and real money demand.
+path.pi = par.a_z * z + par.a_v * v;
+path.R_hat = (par.phi_pi * path.pi + v) / ss.R;
+path.m_hat = par.sigma * path.C_hat - path.R_hat / ss.i;
+end %end function
