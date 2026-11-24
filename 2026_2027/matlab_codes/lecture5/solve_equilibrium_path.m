@@ -21,13 +21,15 @@ assert(isvector(u_z) && isvector(u_v) && numel(u_z) == numel(u_v), ...
 T = numel(u_z);
 z = zeros(T,1);
 v = zeros(T,1);
-z_previous = z_initial;
-v_previous = v_initial;
-for t = 1:T
-    z(t) = par.rho_z * z_previous + u_z(t);
-    v(t) = par.rho_v * v_previous + u_v(t);
-    z_previous = z(t);
-    v_previous = v(t);
+
+% MATLAB index 1 is quarter 0, when the first innovation arrives.
+if T > 0
+    z(1) = par.rho_z * z_initial + u_z(1);
+    v(1) = par.rho_v * v_initial + u_v(1);
+end
+for t = 2:T
+    z(t) = par.rho_z * z(t-1) + u_z(t);
+    v(t) = par.rho_v * v(t-1) + u_v(t);
 end
 path.z = z;
 path.v = v;
@@ -44,4 +46,5 @@ path.E_R_hat = par.sigma * par.b * (par.rho_z - 1) * z;
 path.pi = par.a_z * z + par.a_v * v;
 path.I_hat = (par.phi_pi * path.pi + v) / ss.I;
 path.m_hat = par.sigma * path.C_hat - path.I_hat / ss.i;
+
 end %end function
