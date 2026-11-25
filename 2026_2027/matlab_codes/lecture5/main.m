@@ -40,8 +40,7 @@ u_v(1) = 0.001;      % 10 basis points in the interest-rate rule at quarter 0
 irf_policy = solve_equilibrium_path(par, ss, no_shock, u_v, 0, 0);
 
 %% Plot responses to a TFP innovation
-figure('Name', 'TFP innovation', 'Color', 'white', ...
-       'Position', [100 100 1100 780]);
+figure('Name', 'TFP innovation', 'Color', 'white');
 layout = tiledlayout(3,3, 'TileSpacing', 'compact', 'Padding', 'compact');
 title(layout, 'TFP innovation');
 xlabel(layout, 'Quarters after the innovation');
@@ -111,8 +110,7 @@ yline(0, ':', 'Color', [0.5 0.5 0.5], 'Layer', 'bottom');
 xlim([0 T-1]);
 
 %% Plot responses to a monetary policy innovation
-figure('Name', 'Innovation to the central bank''s interest-rate rule', 'Color', 'white', ...
-       'Position', [100 100 1100 780]);
+figure('Name', 'Innovation to the central bank''s interest-rate rule', 'Color', 'white');
 layout = tiledlayout(3,3, 'TileSpacing', 'compact', 'Padding', 'compact');
 title(layout, 'Innovation to the central bank''s interest-rate rule');
 xlabel(layout, 'Quarters after the innovation');
