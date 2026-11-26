@@ -72,7 +72,8 @@ ylabel('Rental rate r');
 title('More income risk, unchanged mean labour');
 legend(sprintf('Supply: risk = %.2f',low_risk), ...
     sprintf('Supply: risk = %.2f',risk),'Capital demand', ...
-    'Lower-risk equilibrium','Baseline equilibrium','Location','northeast');
+    sprintf('Lower risk (\\epsilon = %.2f)',low_risk), ...
+    sprintf('Higher risk (\\epsilon = %.2f)',risk),'Location','northeast');
 % Zoom around the two equilibria so the small risk effect is visible.
 xlim([0.90*min(baseline.K,lower_risk.K),1.10*max(baseline.K,lower_risk.K)]);
 ylim([0.95*min(baseline.r,lower_risk.r),1.05*max(baseline.r,lower_risk.r)]);
