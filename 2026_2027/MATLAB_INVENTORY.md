@@ -2,7 +2,7 @@
 
 Course: **40073 Monetary Economics and the Macroeconomy**, University of Birmingham, Alessandro Di Nola.
 
-Updated on **25 November 2026**. The shared collection is in [Bham_Monetary_Economics](https://github.com/aledinola/Bham_Monetary_Economics/tree/main/2026_2027). The Lecture 5 classical monetary model is published in `matlab_codes/lecture5/`. The October Lecture 3 benchmark and figure revisions described below apply to the Dropbox code; the GitHub live script uses the preceding version.
+Updated on **26 November 2026**. The shared collection is in [Bham_Monetary_Economics](https://github.com/aledinola/Bham_Monetary_Economics/tree/main/2026_2027). The Lecture 5 classical monetary model is published in `matlab_codes/lecture5/`. The October Lecture 3 benchmark and figure revisions described below apply to the Dropbox code; the GitHub live script uses the preceding version.
 
 The central teaching-code folder is **`matlab_codes/`**, containing **16 MATLAB source files and one saved workspace** in both locations. There are no `.mlx` files; the four live scripts use plain-text `.m` format. The figure generator `1_lectures/figures/app1.m` is **Dropbox-only**, preserved at its existing location because it generates plots imported by the lecture TeX files. GitHub has no `1_lectures/` folder. There are no duplicate assessment-folder copies of the shared MATLAB files.
 
@@ -170,3 +170,8 @@ The AI results plot in `lecture3_extra.m` now uses distinct bar colors: blue for
 Moved and revised `main_davila.m` into `matlab_codes/assignment_workshop/`, retaining one maintained copy. The script follows the original damped capital iteration, adds convergence checks and two teaching diagrams, and removes the alternative root solver. The assignment baseline is unchanged.
 
 MATLAB R2026a Code Analyzer and the complete run passed. Baseline capital is 0.173773926928; lower-risk capital is 0.170190434191. Market-clearing errors are below 1e-8. Positive consumption, budgets, factor pricing, mean labour, the Euler equation and both diagrams were checked, including 300 household solves across the plotting grids. The largest scaled equilibrium Euler residual was 8.032e-8; the grid maximum was 7.323e-8. Baseline capital differs from the original fixed-point result by 5.733e-7. Separate log-utility and zero-risk checks passed. The local workshop PDF has 30 pages, including its title page, and was compiled and visually checked.
+
+
+### Workshop household solver simplification, 26 November 2026
+
+Removed the explicit comparison with zero saving from `assignment_workshop/main_davila.m`; the household helper now returns the `fminbnd` solution directly. The unused objective-value output is discarded. MATLAB R2026a Code Analyzer and the complete script passed. Both equilibria retain market-clearing errors below 1e-8. Compared with the preceding version, the largest change in equilibrium quantities/prices was 8.739e-9 and the largest change in plotted data was 1.619e-8.

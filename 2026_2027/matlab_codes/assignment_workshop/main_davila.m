@@ -164,14 +164,10 @@ function k = solve_household(r,w,sigma,prob,beta,y,e_l,e_h)
 % OUTPUTS:
 % k: Scalar optimal saving, constrained to be non-negative and below y.
 options = optimset('TolX',1e-10,'Display','off');
-[k,value,exitflag] = fminbnd(@(k) f_household(k,r,w,sigma,prob,beta,y,e_l,e_h), ...
+[k,~,exitflag] = fminbnd(@(k) f_household(k,r,w,sigma,prob,beta,y,e_l,e_h), ...
     0,y,options);
 if exitflag <= 0
     error('The household maximization did not converge.');
-end
-% fminbnd searches the interior. Check the feasible zero-saving endpoint too.
-if f_household(0,r,w,sigma,prob,beta,y,e_l,e_h) <= value
-    k = 0;
 end
 end %end function
 
